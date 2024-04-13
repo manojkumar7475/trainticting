@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Train Search and Seat Availability</title>
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css">
+     -->
+     <style>
+        h1{
+            text-align: center;
+            
+        }
+        body {
+        font-family: Arial, sans-serif;
+        background-image: url('adminbackground.jpg');
+        background-size: cover;
+    
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+    form {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    input[type="text"],
+    input[type="date"]
+    {
+        width: 200px;
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+
+    #searchForm{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    button,#book {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        
+    }
+    #book{
+        display: flex;
+        align-items: center;
+
+    }
+    
+    
+    button:hover {
+        background-color: #0056b3;
+    }
+    
+    #searchResults {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    
+    .train {
+        border: 1px solid #ccc;
+        padding: 10px;
+        cursor: pointer;
+    }
+    
+    
+    .train:hover {
+        background-color: #f9f9f9;
+    }</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Train Search and Seat Availability</h1>
+        <form id="searchForm">
+            <label for="origin" style="font-weight: bold;">Origin</label>
+            <input type="text" id="origin" name="origin" required>
+            <label for="destination" style="font-weight: bold;">Destination</label>
+            <input type="text" id="destination" name="destination" required>
+            <label for="date" style="font-weight: bold;">Date</label>
+            <input type="date" id="date" name="date" required>
+            <br>
+            <button type="submit" id="sub">Search</button>
+        </form>
+        <div id="details">
+        </div>
+        <br>
+        <button><a href="./customerportal.html" id="book">BOOKNOW</a></button>
+    </div>
+
+    <script>
+        const searchForm = document.getElementById('searchForm');
+        const searchResults = document.getElementById('details');
+        
+        searchForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const origin = document.getElementById('origin').value;
+            const destination = document.getElementById('destination').value;
+            const date = document.getElementById('date').value;
+            localStorage.setItem('origin', origin);
+            localStorage.setItem('destination',destination)
+            localStorage.setItem('date',date)
+
+
+        
+            // Simulated search results
+            const trains = [
+                { name: 'Train A', seats: { firstClass: 10, secondClass: 20, thirdClass: 30 } },
+                { name: 'Train B', seats: { firstClass: 5, secondClass: 15, thirdClass: 25 } },
+                { name: 'Train C', seats: { firstClass: 20, secondClass: 30, thirdClass: 40 } }
+            ];
+        
+            displaySearchResults(trains);
+        });
+        
+        function displaySearchResults(trains) {
+            searchResults.innerHTML = '';
+            trains.forEach(function(train) {
+                const trainElement = document.createElement('div');
+                trainElement.classList.add('train');
+                trainElement.innerHTML = `
+                    <h3>${train.name}</h3>
+                    <p>First Class: ${train.seats.firstClass} seats</p>
+                    <p>Second Class: ${train.seats.secondClass} seats</p>
+                    <p>Third Class: ${train.seats.thirdClass} seats</p>
+                `;
+                searchResults.appendChild(trainElement);
+            });
+        }</script>
+</body>
+</html>

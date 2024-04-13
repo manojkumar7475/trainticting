@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Train Booking System</title>
+<!-- <link rel="stylesheet" href="styles.css"> -->
+<style>
+  
+.Sucess-Message.hide {
+  display: none;
+}
+.Sucess-Message{
+  text-align: center;
+
+}
+body {
+    background-image: url("loginbackground.jpg");
+    background-size: cover;
+    backdrop-filter: blur(10px);
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.dashboard-section {
+    margin-top: 30px;
+}
+
+.dashboard-section h3 {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.dashboard-section label {
+    display: block;
+    margin-bottom: 5px;
+    color: #777;
+}
+
+.dashboard-section input[type="text"],
+.dashboard-section input[type="tel"],
+.dashboard-section input[type="number"],
+.dashboard-section input[type="date"],
+.dashboard-section select {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.dashboard-section button[type="submit"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.dashboard-section button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.Sucess-Message {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #4caf50;
+    border-radius: 4px;
+    background-color: #e7f3e9;
+    color: #4caf50;
+}
+
+.Sucess-Message.hide {
+    display: none;
+}
+
+#viewTicketTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#viewTicketTable th,
+#viewTicketTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#viewTicketTable th {
+    background-color: #f2f2f2;
+}
+
+#logoutButton {
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#logoutButton:hover {
+    background-color: #d32f2f;
+}
+</style>
+  
+  
+</head>
+<body>
+
+<div class="container">
+  <h2>Train Booking System</h2>
+  
+  <!-- 1. Number of tickets booked per class and Sales done per quarter
+  <div class="dashboard-section">
+    <h3>Aggrigate Data</h3>
+    <p>Number of tickets booked per class: <span id="ticketsPerClass">0</span></p>
+    <p>Sales done per quarter: <span id="salesPerQuarter">$0</span></p>
+  </div> -->
+  
+  <!-- 2. Book Ticket -->
+  <div class="dashboard-section">
+    <h3>Book Ticket</h3>
+    <div class="user-info">
+
+    </div>
+    <form id="bookTicketForm" onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+      <!-- <label for="TicketID">TicketID:</label>
+      <input type="text" id="TicketID" name="TicketID" > -->
+
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name"  >
+      <label for="mobile">Mobile:</label>
+      <input type="tel" id="mobile" name="mobile"  >
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age"  >
+      <label for="date1" >Date:</label>
+      <label for="date" id="date" style="font-weight: bolder;">Date:</label>
+      <!-- <input type="date" id="date" name="date"  > -->
+      <label for="boardingStation1">Boarding Station:</label> 
+      <!-- <input type="text" id="boardingStation1" name="boardingStation"  > -->
+      <label for="boardingdestination" id="boardingstation" style="font-weight: bolder;">Boardingstation:</label>
+      <label for="destinationStation1" >Destination Station:</label>
+      <label for="destinationStation" id="destinationStation" style="font-weight: bolder;">Destination Station:</label>
+      <label for="ticketCategory">Ticket Category:</label>
+      <select id="ticketCategory" name="ticketCategory"  >
+        <option value="First class">First class</option>
+        <option value="A.C tier 1">A.C tier 1</option>
+        <option value="A.C tier 2">A.C tier 2</option>
+        <option value="Tatkal">Tatkal</option>
+      </select>
+      <label for="trainsAvailable">Trains Available:</label>
+      <select id="trainsAvailable" name="trainsAvailable"  >
+        <option value="Train 1">Train 1</option>
+        <option value="Train 2">Train 2</option>
+        <option value="Train 3">Train 3</option>
+      </select>
+      <label for="numTickets">Number of Tickets:</label>
+      <input type="number" id="numTickets" name="numTickets"  >
+      <!-- <button type="submit">Submit</button> -->
+      <button type="submit">Submit</button>
+
+    </form>
+    
+  </div>
+<div id="successMessage" class="Sucess-Message hide" style="color:red">
+    Ticket Sucessfully Booked
+</div>
+<div id="deleteMessage" class="Sucess-Message hide" style="color:red">
+  Ticket Sucessfully Canceled
+</div>
+<br/>
+  <!-- 3. View Ticket -->
+  <div class="dashboard-section">
+    <h3>View Ticket</h3>
+    <table id="viewTicketTable">
+      <thead>
+        <tr>
+          <th>Ticket ID</th>
+          <th>Train ID</th>
+          <th>User ID</th>
+          <th>User Name</th>
+          <th>Boarding Station</th>
+          <th>Destination Station</th>
+          <th>Boarding Date and Time</th>
+          <th>Arrival Date and Time</th>
+          <th>Number of Tickets</th>
+          <th>Cancel Ticket</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Populate this dynamically with ticket data -->
+      </tbody>
+    </table>
+  </div>
+
+  
+
+  <!-- 5. Logout -->
+  <div class="dashboard-section">
+    <a href="payment.html">
+      <button id="logoutButton" onclick="payment.html">Paynow</button>
+    </a>
+    <br>
+    <!-- <h3>Logout</h3> -->
+    <a href="UserLogin.html">
+    <button id="logoutButton" onclick="userlogin.html">Logout</button>
+  </a>
+  </div>
+</div>
+
+<script src="customerportal.js"></script>
+<script>
+  
+
+
+  function TicketID() {
+    return Math.floor(Math.random() * 1000); // Generates a random number between 0 and 999
+  }
+  function TrainID() {
+    return Math.floor(Math.random() * 1000); // Generates a random number between 0 and 999
+  }
+  function userID() {
+    return Math.floor(Math.random() * 1000); // Generates a random number between 0 and 999
+  }
+
+  // Set the default random number when the page loads
+window.onload = function() { 
+var form = document.getElementById('bookTicketForm'); 
+var successMessage = document.getElementById('successMessage');
+
+// Function to handle form submission
+form.addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent default form submission
+
+  // Simulate data insertion operation
+  // In a real application, you would perform an AJAX request or interact with a backend server here
+  // For demonstration purposes, we'll just display the success message after a short delay
+  setTimeout(function() {
+      // Show the success message
+      successMessage.classList.remove('hide');
+      // Reset the form
+      form.reset();
+      // Hide the success message after 3 seconds
+      setTimeout(function() {
+          successMessage.classList.add('hide');
+      }, 6000);
+  }, 1000); // Simulating insertion delay with 1 second -->
+});
+};
+
+</script>
+</body>
+</html>

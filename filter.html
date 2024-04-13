@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking History</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+        color: #333;
+    }
+    
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+        text-align: center;
+        color: #007bff;
+        font-weight: bold;
+    }
+    
+    .filters {
+        margin-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .filters label {
+        margin-right: 10px;
+        color: #555;
+    }
+    
+    .filters input,
+    .filters select {
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+    
+    .filters button {
+        padding: 8px 20px;
+        border-radius: 4px;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .filters button:hover {
+        background-color: #0056b3;
+    }
+    
+    .results {
+        text-align: center;
+    }
+    
+    .results ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .results li {
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+        transition: background-color 0.3s;
+    }
+    
+    .results li:last-child {
+        border-bottom: none;
+    }
+    
+    .results li:hover {
+        background-color: #f0f0f0;
+    }
+    
+    .dummy-details {
+        margin: 50px auto;
+        padding: 20px;
+        max-width: 600px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    
+    .dummy-details h2 {
+        color: #ff6b6b;
+        font-weight: bold;
+    }
+    
+    .dummy-details p {
+        margin-bottom: 10px;
+    }
+    
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Booking History</h1>
+    <div class="filters">
+        <br>
+        <label for="date">Date:</label>
+        <input type="date" id="date">
+        <br>
+        <label for="train">Train:</label>
+        <br>
+        <input type="text" id="train">
+        <label for="status">Status:</label>
+        <select id="status">
+            <option value="all">All</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="cancelled">Cancelled</option>
+        </select>
+        <button onclick="applyFilters()">Apply Filters</button>
+        <button onclick="resetFilters()">Reset Filters</button>
+    </div>
+    <div class="results" id="results">
+        <!-- Results will be displayed here -->
+    </div>
+</div>
+
+<div class="dummy-details">
+    <h2>Train Booking Requirements</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend massa eget quam tincidunt, at ultricies nisi feugiat. Ut sit amet maximus tortor. Aliquam at eros eu ex vehicula mattis.</p>
+    <p>Nulla facilisi. Nullam eget nulla id leo gravida tristique. Vivamus efficitur leo eu metus ultrices lacinia. Proin sit amet justo ut lacus aliquam dictum.</p>
+</div>
+
+<script src="script.js"></script>
+<script>
+    function applyFilters() {
+        // Get filter values
+        var date = document.getElementById('date').value;
+        var train = document.getElementById('train').value;
+        var status = document.getElementById('status').value;
+    
+        // Perform filtering (fetch results from server, etc.)
+        var results = []; // Placeholder for demonstration
+    
+        // Display results
+        displayResults(results);
+    }
+    
+    function displayResults(results) {
+        var resultsContainer = document.getElementById('results');
+        resultsContainer.innerHTML = '';
+    
+        if (results.length === 0) {
+            resultsContainer.innerHTML = '<p>No results found.</p>';
+            return;
+        }
+    
+        var ul = document.createElement('ul');
+        results.forEach(function(result) {
+            var li = document.createElement('li');
+            li.textContent = result;
+            ul.appendChild(li);
+        });
+    
+        resultsContainer.appendChild(ul);
+    }
+    
+    function resetFilters() {
+        document.getElementById('date').value = '';
+        document.getElementById('train').value = '';
+        document.getElementById('status').value = 'all';
+    
+        // Reset results
+        document.getElementById('results').innerHTML = '';
+    }
+    
+</script>
+</body>
+</html>

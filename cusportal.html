@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Ticket Booking Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome CSS -->
+    <style>body{
+        font-family: Arial, sans-serif;
+        background-image: url('adminbackground.jpg');
+    
+        background-size: cover;
+        background-repeat: no-repeat;}
+        /* Style the navigation bar */
+        h1{
+            color: rgb(202, 11, 30);
+            font-family:cursive;
+            text-align: center;
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: #333; /* Background color */
+        }
+        
+        /* Style the links inside the navigation bar */
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2; /* Text color */
+            text-align: center;
+            padding: 24px 20px; /* Padding */
+            text-decoration: none;
+        }
+        
+        /* Change the color of links on hover */
+        .navbar a:hover {
+            background-color: #ddd; /* Background color on hover */
+            color: black; /* Text color on hover */
+        }
+
+        /* Style the search bar */
+        .search-container {
+            float: right;
+            margin-right: 20px;
+        }
+
+        .search-container input[type="text"] {
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            border: none;
+            width: 200px;
+        }
+
+        .search-container button {
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            background: #ddd;
+            border: none;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background: #ccc;
+        }
+        #uname{
+            color: rgb(202, 11, 30);
+            font-family:cursive;
+            font-size: large;
+            
+            margin-left: 48%;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="about.html">Home</a>
+        <a href="customerportal.html">Book Ticket</a>
+        <a href="viewticket.html">View Ticket</a>
+        <a href="updatedetails.html">Update Details</a>
+        <a href="traindetails.html">Search Trains</a>
+        <a href="about.html">Logout</a>
+        <a href="filter.html">Booked Tickets</a>
+    </div> 
+    <h1>Welcome to AbhiTrain </h1>
+    <label for inp id="uname"></label>
+    <script>const value = localStorage.getItem('userId');
+        document.getElementById('uname').textContent = value;
+    </script>
+</body>
+</html>

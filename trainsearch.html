@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Search and Seat Availability</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        form {
+            max-width: 350px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        input[type="text"],
+        input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        #originstation,#destinationstation{
+              list-style-type: none;
+              padding: 0;
+              margin: 0;
+        }
+
+        #originstation li a ,#destinationstation li a{
+              border: 1px solid #ddd;
+              margin-top: -1px; /* Prevent double borders */
+              background-color: #f6f6f6;
+              padding: 12px;
+              text-decoration: none;
+              font-size: 18px;
+              color: black;
+              display: block
+        }
+
+        #originstation li a:hover:not(.header),#destinationstation li a:hover:not(.header){
+              background-color: #eee;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <h2>Trains Search</h2>
+
+    <!-- Train Search Form -->
+    <form id="trainSearchForm" action="search_results.html" method="GET">
+        <label for="origin">Origin:</label>
+        <input type="text" id="origin" name="origin" onkeyup="myFunction()" required>
+            <ul id="originstation">
+              <li><a href="#">Hyderabad</a></li>
+              <li><a href="#">Mumbai</a></li>
+
+              <li><a href="#">Delhi</a></li>
+              <li><a href="#">Chennai</a></li>
+
+              <li><a href="#">Kolkata</a></li>
+              <li><a href="#">Lucknow</a></li>
+              <li><a href="#">Banglore</a></li>
+
+               <li><a href="#">Gujarat</a></li>
+               <li><a href="#">Rajasthan</a></li>
+               <li><a href="#">Punjab</a></li>
+            </ul>
+
+        <label for="destination">Destination:</label>
+        <input type="text" id="destination" name="destination" onkeyup="myFunction1()" required>
+            <ul id="destinationstation">
+              <li><a href="#">Hyderabad</a></li>
+              <li><a href="#">Mumbai</a></li>
+
+              <li><a href="#">Delhi</a></li>
+              <li><a href="#">Chennai</a></li>
+
+              <li><a href="#">Kolkata</a></li>
+              <li><a href="#">Lucknow</a></li>
+              <li><a href="#">Banglore</a></li>
+
+               <li><a href="#">Gujarat</a></li>
+               <li><a href="#">Rajasthan</a></li>
+               <li><a href="#">Punjab</a></li>
+            </ul>
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <button type="submit">Search</button>
+    </form>
+
+    <script>
+        function myFunction() {
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById("origin");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("originstation");
+            li = ul.getElementsByTagName("li");
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+        function myFunction1() {
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById("destination");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("destinationstation");
+            li = ul.getElementsByTagName("li");
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+        //var arr={} -->
+
+    </script>
+</body>
+</html>

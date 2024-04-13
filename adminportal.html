@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Train Booking System</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+    nav {
+        background-color: #444;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+    section {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    h2 {
+        margin-top: 0;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        box-sizing: border-box;
+        font-weight: bold;
+    }
+    input[type="submit"], input[type="button"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    input[type="submit"]:hover, input[type="button"]:hover {
+        background-color: #45a049;
+    }
+  
+  #register{
+        width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        position: auto;
+  }
+  
+  #profile{
+        width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        position: auto;
+  }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Train Booking System</h1>
+</header>
+
+<nav>
+    <a href="#home">Home</a> |
+    <a href="#register">Register a Train</a> |
+    <a href="#profile">Profile</a> |
+    <a href="#profile">Logout</a>
+</nav>
+
+<section id="home">
+    <h2>Home Section</h2>
+    <div>
+        <h3>Aggregate Table Section</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Number of tickets booked per class</th>
+                    <th>Sales done per quarter</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>10</td>
+                    <td>$10000</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>$15000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <h3>Another Table Section</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Mobile</th>
+                    <th>Number Of ticket Booked</th>
+                    <th>Delete customer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>John Doe</td>
+                    <td>1234567890</td>
+                    <td>5</td>
+                    <td><button>Delete</button></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Jane Smith</td>
+                    <td>9876543210</td>
+                    <td>8</td>
+                    <td><button>Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<h2>Register a Train Section</h2>
+<section id="register">
+    
+    <form>
+        <label for="trainName">Name of train:</label>
+        <input type="text" id="trainName" name="trainName" required>
+        
+        <label for="numSeats">Number of seats:</label>
+        <input type="number" id="numSeats" name="numSeats" required>
+        
+        <label for="to">To:</label>
+        <input type="text" id="to" name="to" required>
+        
+        <label for="from">From:</label>
+        <input type="text" id="from" name="from" required>
+        
+        <label for="ownership">Ownership for the train:</label>
+        <input type="text" id="ownership" name="ownership" required>
+        
+        <input type="submit" value="Submit">
+    </form>
+</section>
+
+<h2>Profile Section</h2>  
+<section id="profile">
+    
+    <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        
+        <label for="mobile">Mobile Number:</label>
+        <input type="text" id="mobile" name="mobile" required>
+        
+        <label for="email">Email Id:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <input type="submit" value="Update">
+        <input type="button" value="Delete">
+    </form>
+</section>
+
+<script>
+    document.getElementById("logoutBtn").addEventListener("click", function() {
+        window.location.href = "login.html";
+    });
+</script>
+
+</body>
+</html>
